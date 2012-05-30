@@ -1,0 +1,23 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+
+        $.ajax({
+            url:'http://localhost/menu.json',
+            dataType:'json',
+            success:function (response) {
+                var canal = "",
+                        canals = response.list,
+                        len = canals.length;
+
+                for (i = 0; i < len; ++i) {
+                    canal = canals[i];
+                    var a = $('<a/>').attr('href', canal.params.feedUrl).text(canal.name);
+                    $('body').append(a);
+                }
+            }
+        });
+
+    }
+</script>
+

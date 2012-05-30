@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>tag_title</title>
+
+		<meta name="keywords" content="tag_meta_keywords">
+		<meta name="description" content="tag_meta_description">
+		<meta name="viewport" content="width=device-width">
+
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+		<style type="text/css">
+			ul, li, p {
+				margin: 0;
+				padding: 0;
+			}
+
+			.comment {
+				list-style: none;
+				padding: 10px;
+				border: 1px solid #000;
+				width: 300px;
+				overflow: hidden;
+				margin-bottom: 10px;
+				font-family: arial;
+				font-size: 11px;
+			}
+
+			.redBorder {
+				border-color: red;
+			}
+		</style>
+	</head>
+	<body>
+
+    <ul>
+        <li class="comment">
+            <p class="content">                  Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemye poligraficznym. Zosta po raz pierwszy  w XV w. przez nieznanego drukarza do wypełienia tekstem prj książki.                                </p>
+        </li>
+        <li class="comment">
+            <p class="content">Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemye poligraficznym. Zosta po raz pierwszy  w XV w. przez nieznanego drukarza do wypełienia tekstem prj książki.</p>
+        </li>
+        <li class="comment">
+            <p class="content">Lorem Ipsum jest tekstem stosowanym jako przykładowy wypełniacz w przemye poligraficznym. Zosta po raz pierwszy  w XV w. przez nieznanego drukarza do wypełienia tekstem prj książki.</p>
+        </li>
+    </ul>
+
+    <script type="text/javascript">
+        /*
+        $(document).ready(function() {
+
+            var $comment = $('.comment:eq(0)');
+
+            $comment.find('.content').css({
+                color: '#454',
+                fontWeight: 'bold',
+                height: 50
+            }).end().addClass('redBorder').click(function() {
+            var content = $.trim($(this).find('.content').text());
+
+            console.log(content);
+            });
+
+            var comment = document.getElementsByClassName('comment')[0];
+
+            var commentChild = comment.children[0];
+                commentChild.style.color = '#454';
+                commentChild.style.fontWeight = 'bold';
+                commentChild.style.height = '150px';
+
+            var addClass = comment.className;
+            addClass += ' ';
+            addClass += 'redBorder';
+            comment.className = addClass;
+
+            comment.onclick = function(){
+                var description = commentChild.innerHTML;
+                var trim = description.replace(/^\s+/, '');
+                console.log(trim);
+            }
+        });
+        */
+
+        window.onload = function() {
+            document.getElementsByTagName('body')[0].style.backgroundColor = 'silver';
+            //console.info(document.getElementsByTagName('body'));
+        };
+
+        event = {}; // główny obiekt
+        event.bind = function(element, name, handler) {         // metoda ktora dodaje eventy
+              if ( element.attachEvent ) {                      // jesli IE
+                  element.attachEvent(name, handler);
+              } else if (element.addEventListener) {
+                  element.addEventListener(name, handler);
+              } else {
+                  element["on"+ name] = handler;
+              }
+        };
+        // WYWOŁANIE: event.bind(comment, 'click', function(){})
+
+
+        dom = {};
+        dom.walk_the_dom = function (node, func) {
+            if (!!node) {
+                func(node);
+                node = node.firstChild;
+                while (node) {
+                    dom.walk_the_dom(node, func);
+                    node = node.nextSibling;
+                }
+            }
+        };
+        dom.element = {};
+        dom.element.getByClass = function(elementClassName, placeholder) {
+              var htmlElements = [];
+              dom.walk_the_dom(placeholder, function(htmlElement) {
+                  if ( htmlElement.className === elementClassName ) {
+                      htmlElements.push(htmlElement);
+                  }
+              });
+              return htmlElements;
+        };
+        // WYWOŁANIE:
+        // var li = dom.element.getByClass('comment', document)[0];
+        // var p = dom.element.getByClass('content', li)
+
+
+        dom.element.addClass = function (className, element) {
+            if (!dom.element.hasClass(className, element)){
+                element.className += ' ' + className;
+                string.trim(element.className);
+            }
+        };
+        // WYWOŁANIE: dom.element.addClass('nazwaKlasy', div);
+
+
+        dom.element.hasClass = function (className, element) {
+            var r = new RegExp('^(.+)'+ className + '(.+)$');
+            return r.test(' ' + element.className + ' ');   // test zwraca true || false
+        };
+        // WYWOŁANIE: dom.element.hasClass('nazwaKlasy', div);
+
+
+        dom.element.removeClass = function (className, element) {
+            if (dom.element.hasClass(className, element)) {
+                var r = new RegExp(' '+ className + ' ');
+                var c = ' ' + element.className + ' ';
+                element.className = string.trim(c.replace(r, ''));
+            }
+        };
+        // WYWOŁANIE: dom.element.removeClass('nazwaKlasy', DIV);
+
+        string = {};
+        string.trim = function (s) {
+            return s.replace(/^\s+/, '').replace(/\s+$/, '');
+        };
+        // WYWOŁANIE: string.trim(' sfdsf ');
+
+
+        var comment = dom.element.getByClass('comment', document)[0];
+        var content = dom.element.getByClass('content', comment)[0];
+        var content_active = false;
+
+        event.bind(content, 'click', function () {
+            if (!content_active) {
+                content_active = true;
+                // jeśli są już jakieś style content.style.cssText += '; color:blue';
+                content.style.cssText = 'color:red; font-weight:bold; height:150px'
+                dom.element.addClass('redBorder', comment);
+                // console.log(string.trim(content.innerHTML));
+            } else {
+                content_active = false;
+                content.style.cssText = 'color:none; font-weight:inherit; height:auto';
+                dom.element.removeClass('redBorder', comment);
+            }
+        });
+    </script>
+
+	</body>
+</html>
