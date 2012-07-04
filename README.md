@@ -1,4 +1,4 @@
-"Bądźcie samoukami, nie czekajcie aż was nauczy życie."
+# "Bądźcie samoukami, nie czekajcie aż was nauczy życie."
  Stanisław Jerzy Lec
 
 "Nauka to pokarm dla rozumu."
