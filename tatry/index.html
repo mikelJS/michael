@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="pl" xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="content-language" content="pl"/>
+    <title>Tatry</title>
+
+    <script type="text/javascript" src="src/lib/jquery.js"></script>
+    <script type="text/javascript" src="src/plugins/tatry/__init__.js"></script>
+    <script type="text/javascript" src="src/plugins/tatry/filter.js"></script>
+    <script type="text/javascript" src="src/plugins/tatry/loader.js"></script>
+    <script type="text/javascript" src="src/plugins/tatry/sorter.js"></script>
+    <script type="text/javascript" src="src/core/bootstrap.js"></script>
+
+    <style>
+        body {font-size: 11px; font-family: arial;}
+        table {border-collapse: collapse; width: 900px;}
+        td,th {border: 1px solid #000; padding:10px; text-align:center;}
+    </style>
+</head>
+<body>
+
+    <select id="filter-select-date">
+        <option value="">wybierz...</option>
+    </select>
+    <select id="filter-select-where">
+        <option value="">wybierz...</option>
+    </select>
+    <select id="filter-select-who">
+        <option value="">wybierz...</option>
+    </select>
+    <select id="filter-select-age">
+        <option value="">wybierz...</option>
+    </select>
+    <select id="filter-select-przyczyna">
+        <option value="">wybierz...</option>
+    </select>
+    <select id="filter-select-skutek">
+        <option value="">wybierz...</option>
+    </select>
+    <select id="filter-select-desc">
+        <option value="">wybierz...</option>
+    </select>
+
+    <input id="filter-where-input" type="text" value="" />
+    <button id="filter-submit">filtruj dziwko</button>
+    <button id="filter-reset-submit">resetuj</button>
+
+    <div style="clear:both;"></div>
+
+    <table cellpadding="0" cellspacing="0" id="tatryTable">
+        <thead>
+            <tr>
+                <th sort="date">data</th>
+                <th sort="alphabetic">gdzie</th>
+                <th sort="alphabetic">kto</th>
+                <th sort="numeric">wiek</th>
+                <th sort="alphabetic">przyczyna</th>
+                <th sort="alphabetic">skutek</th>
+                <th sort="description">opis</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>08.04.2012</td>
+                <td>Kozi Wierch</td>
+                <td>Kobieta</td>
+                <td>30</td>
+                <td>poslizniecie</td>
+                <td>smierc</td>
+                <td>znaleziono cialo wieczorem</td>
+            </tr>
+            <tr>
+                <td>03.04.2012</td>
+                <td>Kozi Wierch</td>
+                <td>Kobieta</td>
+                <td>30</td>
+                <td>poslizniecie</td>
+                <td>smierc</td>
+                <td>znaleziono cialo wieczorem</td>
+            </tr>
+            <tr>
+                <td>24.07.2011</td>
+                <td>Zawrat</td>
+                <td>Dziecko</td>
+                <td>65</td>
+                <td>poslizniecie</td>
+                <td>smierc</td>
+                <td>znaleziono cialo wieczorem</td>
+            </tr>
+            <tr>
+                <td>3.03.2012</td>
+                <td>Zawrat</td>
+                <td>Dziecko</td>
+                <td>65</td>
+                <td>poslizniecie</td>
+                <td>smierc</td>
+                <td>znaleziono cialo wieczorem</td>
+            </tr>
+            <tr>
+                <td>14.06.2012</td>
+                <td>Zawrat</td>
+                <td>Facet</td>
+                <td>21</td>
+                <td>poslizniecie</td>
+                <td>omdlenie</td>
+                <td>znaleziono cialo wieczorem</td>
+            </tr>
+            <tr>
+                <td>1.05.2012</td>
+                <td>Rysy</td>
+                <td>Babcia</td>
+                <td>18</td>
+                <td>odpadniecie od sciany</td>
+                <td>smierc</td>
+                <td>znaleziono cialo wieczorem</td>
+            </tr>
+            <tr>
+                <td>1.05.2012</td>
+                <td>Rysy</td>
+                <td>Babcia</td>
+                <td>28</td>
+                <td>se skoczylam se</td>
+                <td>smierc</td>
+                <td>nic nie znaleziono</td>
+            </tr>
+            <tr>
+                <td>1.04.2012</td>
+                <td>Kozi Wierch 2</td>
+                <td>Kobieta</td>
+                <td>30</td>
+                <td>poslizniecie</td>
+                <td>smierc</td>
+                <td>znaleziono cialo wieczorem</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
